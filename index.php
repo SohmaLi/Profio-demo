@@ -1,0 +1,243 @@
+<?php
+
+$conn = mysqli_connect('localhost','root','','contact_db') or die('connection failed');
+
+if(isset($_POST['send'])){
+
+   $name = mysqli_real_escape_string($conn, $_POST['name']);
+   $email = mysqli_real_escape_string($conn, $_POST['email']);
+   $number = mysqli_real_escape_string($conn, $_POST['number']);
+   $msg = mysqli_real_escape_string($conn, $_POST['message']);
+
+   $select_message = mysqli_query($conn, "SELECT * FROM `contact_form` WHERE name = '$name' AND email = '$email' AND number = '$number' AND message = '$msg'") or die('query failed');
+   
+   if(mysqli_num_rows($select_message) > 0){
+      $message[] = 'message sent already!';
+   }else{
+      mysqli_query($conn, "INSERT INTO `contact_form`(name, email, number, message) VALUES('$name', '$email', '$number', '$msg')") or die('query failed');
+      $message[] = 'message sent successfully!';
+   }
+
+}
+
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Page Home</title>
+        <!-- font awesome link in cdnjs -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <!-- css link -->
+        <link rel="stylesheet" href="css/style.css">
+        <!-- aos hiệu ứng animaition -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    </head>
+    <body>
+    <?php
+
+if(isset($message)){
+   foreach($message as $message){
+      echo '
+      <div class="message" data-aos="zoom-out">
+         <span>'.$message.'</span>
+         <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+      </div>
+      ';
+   }
+}
+
+?>
+      <!-- start header -->
+      <header class="header">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <!-- menu lớn  -->
+        <a href="" class="logo">Home</a>
+        <!-- <a href="" class="logo">Contract</a> -->
+        <!-- thanh menu -->
+        <nav class="navbar">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#project">Project</a>
+          <a href="#contract">Contract</a>
+          <!-- <a href=""></a> -->
+        </nav>
+        <!-- phần liên kết -->
+        <div class="follow">
+          <a href="#" class="fab fa-facebook"></a>
+          <a href="#" class="fab fa-github"></a> 
+        </div>
+      </header>
+      <!-- end header -->
+      <!-- start section -->
+      <section class="home" id="home">
+        <div class="image" data-aos="fade-right">
+          <img src="images/anh.jpg" alt="anh">
+        </div>
+        <div class="content" data-aos="fade-left">
+          <h3>Hi, I'm Link</h3>
+          <a> Fontend Developer</a>
+          <p>Let me show you my pro</p>
+          <a href="#about" class="btn">about me</a>
+        </div>
+      </section>
+      <!-- end section home -->
+      <!-- start about section -->
+      <section class="about" id="about">
+        <h3 class="heading" data-aos="fade-down"><span>Bioraphy</span></h3>
+        <div class="biography" data-aos="fade-up">
+          <p>I'm in the town</p>
+          <div class="bio">
+            <h3><span>Name :</span> Trương Duy Linh</h3>
+            <h3><span>Age :</span> 22 year</h3>
+            <h3><span>Email :</span> linhtruong6404@gmail.com</h3>
+            <h3><span>Address :</span> NhaBe, TP.HCM</h3>
+            <h3><span>Phone :</span> 0385756404</h3>
+          </div>
+          <a href="#" class="btn">Down CV</a>
+        </div>
+        <div class="skills" data-aos="fade-right">
+          <h3 class="heading"><span>Skill</span></h3>
+          <div class="progress">
+            <div class="bar"><h3><span>html</span><span>80%</span></h3></div>
+            <div class="bar"><h3><span>css</span><span>60%</span></h3></div>
+            <div class="bar"><h3><span>javascript</span><span>50%</span></h3></div>
+          </div>
+        </div>
+        <div class="edu-exp" data-aos="zoom-in">
+          <h3 class="heading"><span>Education</span></h3>
+          <div class="row">
+            <div class="box-container">
+              <h2 class="title">Education</h2>
+              <div class="box">
+                <h2>Đại Học Công Nghệ Sài Gòn</h2>
+                <p>Year : 2018 - 2022</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nisi odit unde blanditiis dolores at, reprehenderit corrupti recusandae aliquam, neque quia doloremque praesentium quidem rerum nobis soluta, animi cupiditate consequatur!</p>
+              </div>
+            </div>
+            <div class="box-container">
+              <h2 class="title">Experience</h2>
+              <div class="box">
+                <p>Year : 2018 - 2022</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nisi odit unde blanditiis dolores at, reprehenderit corrupti recusandae aliquam, neque quia doloremque praesentium quidem rerum nobis soluta, animi cupiditate consequatur!</p>
+              </div>
+              <div class="box">
+                <p>Year : 2018 - 2022</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nisi odit unde blanditiis dolores at, reprehenderit corrupti recusandae aliquam, neque quia doloremque praesentium quidem rerum nobis soluta, animi cupiditate consequatur!</p>
+              </div>
+              <div class="box">
+                <p>Year : 2018 - 2022</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nisi odit unde blanditiis dolores at, reprehenderit corrupti recusandae aliquam, neque quia doloremque praesentium quidem rerum nobis soluta, animi cupiditate consequatur!</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+       
+      </section>
+      <!-- end about section -->
+      
+      <!-- start services section -->
+      <section class="services" id="services">
+        <h1 class="heading" data-aos="fade-down"><span>Services</span></h1>
+        <div class="box-container" data-aos="fade-up">
+          <div class="box">
+            <i class="fas fa-code"></i>
+              <h3>Web Developer</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae veritatis doloremque consectetur explicabo aut dicta mollitia voluptate suscipit animi, architecto excepturi ex veniam maiores hic voluptatibus harum quia quasi tempore?</p>
+          </div>
+          <div class="box">
+            <i class="fas fa-code"></i>
+              <h3>Web Developer</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae veritatis doloremque consectetur explicabo aut dicta mollitia voluptate suscipit animi, architecto excepturi ex veniam maiores hic voluptatibus harum quia quasi tempore?</p>
+          </div>
+          <div class="box">
+            <i class="fas fa-code"></i>
+              <h3>Web Developer</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae veritatis doloremque consectetur explicabo aut dicta mollitia voluptate suscipit animi, architecto excepturi ex veniam maiores hic voluptatibus harum quia quasi tempore?</p>
+          </div>
+        </div>
+      </section>
+      <!-- end services section -->
+
+      <!-- start project section -->
+      <section class="project" id="project">
+        <h1 class="heading" data-aos="fade-right"><span>Project</span></h1>
+        <div class="box-container" data-aos="zoom-in">
+          <div class="box">
+            <i class="fas fa-code"></i>
+              <h3>Web Developer</h3>
+              <img src="images/download.jpg" alt="">
+              <a href="#"></a>
+            <p>project 1 ok</p>
+          </div>
+          <div class="box">
+            <i class="fas fa-code"></i>
+              <h3>Web Developer</h3>
+              <img src="images/download (1).jpg" alt="">
+          </div>
+          <div class="box">
+            <i class="fas fa-code"></i>
+              <h3>Web Developer</h3>
+              <img src="images/download (2).jpg" alt="">
+          </div>
+        </div>
+      </section>
+      <!-- end project section -->
+      <!-- start Contract -->
+      <section class="contract" id="contract">
+        <h1 class="heading" data-aos="fade-up"><span>Contract</span></h1>
+        <!-- <div class="box-container">
+          <div class="box">
+          </div>
+        </div> -->
+        <form action="" method="post" data-aos="fade-up">
+          <div class="flex">
+            <input type="text" name="name" class="box" placeholder="YourName" required>
+            <input type="email" class="box" name="email" placeholder="Email" required>
+          </div>
+          <input type="number" name="number" min="0" class="box" placeholder="enter your number" required>
+          <textarea name="message" id="" cols="30" rows="10" placeholder="Enter your message" class="box"></textarea>
+          <input type="submit" value="Submit" name="send" class="btn">
+        </form>
+      </section>
+      <!-- end Contract -->
+<div class="credit"> &copy; copyrigt @ <?php echo date('Y'); ?> by <span>Link Trương</span></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- end section -->
+
+
+
+
+
+
+      <!-- js link -->
+      <script src="js/script.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      <script>
+
+        AOS.init({
+            duration:800,
+            delay:300
+        });
+
+      </script>
+    </body>
+</html>
