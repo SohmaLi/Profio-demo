@@ -253,7 +253,7 @@ section{
     background-color: var(--yellow);
 }
 .about .edu-exp .row .box-container .box{
-    text-align: left;
+    text-align: center;
     margin: 1.5rem 0;
     background-color: var(--light-bg);
     padding: 2 2 2 1rem;
@@ -316,12 +316,17 @@ section{
 .project .box-container .box{
     height: 30rem;
     width: 100%;
+    margin: 50px 0 50px 0;
     object-fit: cover;
 }
 .project .box-container .box h3{
     margin: 1rem 0;
     font-size: 2rem;
     font-weight: normal;
+}
+.project .box-container .box img{
+    width: 350px;
+    height: 340px;
 }
 .project .box-container .box span{
     font-size: 1.7rem;

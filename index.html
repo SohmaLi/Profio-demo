@@ -1,26 +1,27 @@
-<?php
+<!-- <?php
+    $conn = mysqli_connect('localhost','root','','contact_db') or die('connection failed');
 
-$conn = mysqli_connect('localhost','root','','contact_db') or die('connection failed');
+    if(isset($_POST['send']))
+    {
 
-if(isset($_POST['send'])){
+      $name = mysqli_real_escape_string($conn, $_POST['name']);
+      $email = mysqli_real_escape_string($conn, $_POST['email']);
+      $number = mysqli_real_escape_string($conn, $_POST['number']);
+      $msg = mysqli_real_escape_string($conn, $_POST['message']);
 
-   $name = mysqli_real_escape_string($conn, $_POST['name']);
-   $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $number = mysqli_real_escape_string($conn, $_POST['number']);
-   $msg = mysqli_real_escape_string($conn, $_POST['message']);
-
-   $select_message = mysqli_query($conn, "SELECT * FROM `contact_form` WHERE name = '$name' AND email = '$email' AND number = '$number' AND message = '$msg'") or die('query failed');
-   
-   if(mysqli_num_rows($select_message) > 0){
-      $message[] = 'message sent already!';
-   }else{
-      mysqli_query($conn, "INSERT INTO `contact_form`(name, email, number, message) VALUES('$name', '$email', '$number', '$msg')") or die('query failed');
-      $message[] = 'message sent successfully!';
-   }
-
-}
-
-?>
+      $select_message = mysqli_query($conn, "SELECT * FROM `contact_form` WHERE name = '$name' AND email = '$email' AND number = '$number' AND message = '$msg'") or die('query failed');
+      
+      if(mysqli_num_rows($select_message) > 0)
+      {
+          $message[] = 'message sent already!';
+      }
+      else
+        {
+          mysqli_query($conn, "INSERT INTO `contact_form`(name, email, number, message) VALUES('$name', '$email', '$number', '$msg')") or die('query failed');
+          $message[] = 'message sent successfully!';
+        }
+    }
+?> -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,20 +38,18 @@ if(isset($_POST['send'])){
 
     </head>
     <body>
-    <?php
-
-if(isset($message)){
-   foreach($message as $message){
-      echo '
-      <div class="message" data-aos="zoom-out">
-         <span>'.$message.'</span>
-         <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-      </div>
-      ';
-   }
-}
-
-?>
+    <!-- <?php
+        if(isset($message)){
+          foreach($message as $message){
+              echo '
+              <div class="message" data-aos="zoom-out">
+                <span>'.$message.'</span>
+                <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+              </div>
+              ';
+          }
+        }
+    ?> -->
       <!-- start header -->
       <header class="header">
         <div id="menu-btn" class="fas fa-bars"></div>
@@ -61,7 +60,7 @@ if(isset($message)){
         <nav class="navbar">
           <a href="#home">Home</a>
           <a href="#about">About</a>
-          <a href="#services">Services</a>
+          <!-- <a href="#services">Services</a> -->
           <a href="#project">Project</a>
           <a href="#contract">Contract</a>
           <!-- <a href=""></a> -->
@@ -79,9 +78,9 @@ if(isset($message)){
           <img src="images/anh.jpg" alt="anh">
         </div>
         <div class="content" data-aos="fade-left">
-          <h3>Hi, I'm Link</h3>
+          <h3>Hi, I'm Linh</h3>
           <a> Fontend Developer</a>
-          <p>Let me show you my pro</p>
+          <p>Let me show you my profio</p>
           <a href="#about" class="btn">about me</a>
         </div>
       </section>
@@ -116,33 +115,30 @@ if(isset($message)){
               <div class="box">
                 <h2>Đại Học Công Nghệ Sài Gòn</h2>
                 <p>Year : 2018 - 2022</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nisi odit unde blanditiis dolores at, reprehenderit corrupti recusandae aliquam, neque quia doloremque praesentium quidem rerum nobis soluta, animi cupiditate consequatur!</p>
               </div>
             </div>
             <div class="box-container">
               <h2 class="title">Experience</h2>
               <div class="box">
-                <p>Year : 2018 - 2022</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nisi odit unde blanditiis dolores at, reprehenderit corrupti recusandae aliquam, neque quia doloremque praesentium quidem rerum nobis soluta, animi cupiditate consequatur!</p>
+                <h1>Intern CÔNG TY CỔ PHẦN PHÁT TRIỂN ỨNG DỤNG VIỆT</h1>
+                <p>Year : 9/2021 - 12/2021</p>
+                <p>Developer Web Wordpress </p>
               </div>
               <div class="box">
-                <p>Year : 2018 - 2022</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nisi odit unde blanditiis dolores at, reprehenderit corrupti recusandae aliquam, neque quia doloremque praesentium quidem rerum nobis soluta, animi cupiditate consequatur!</p>
+                <h1>Fresher FPT Software </h1>
+                <p>Year : 3/2022 - 6/2022</p>
+                <p>Developer Magento</p>
               </div>
-              <div class="box">
-                <p>Year : 2018 - 2022</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nisi odit unde blanditiis dolores at, reprehenderit corrupti recusandae aliquam, neque quia doloremque praesentium quidem rerum nobis soluta, animi cupiditate consequatur!</p>
-              </div>
+              
             </div>
           </div>
-
         </div>
        
       </section>
       <!-- end about section -->
       
       <!-- start services section -->
-      <section class="services" id="services">
+      <!-- <section class="services" id="services">
         <h1 class="heading" data-aos="fade-down"><span>Services</span></h1>
         <div class="box-container" data-aos="fade-up">
           <div class="box">
@@ -161,7 +157,7 @@ if(isset($message)){
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae veritatis doloremque consectetur explicabo aut dicta mollitia voluptate suscipit animi, architecto excepturi ex veniam maiores hic voluptatibus harum quia quasi tempore?</p>
           </div>
         </div>
-      </section>
+      </section> -->
       <!-- end services section -->
 
       <!-- start project section -->
@@ -170,8 +166,8 @@ if(isset($message)){
         <div class="box-container" data-aos="zoom-in">
           <div class="box">
             <i class="fas fa-code"></i>
-              <h3>Web Developer</h3>
-              <img src="images/download.jpg" alt="">
+              <h3>Web profio</h3>
+              <img src="images/124.PNG" alt="">
               <a href="#"></a>
             <p>project 1 ok</p>
           </div>
@@ -206,7 +202,7 @@ if(isset($message)){
         </form>
       </section>
       <!-- end Contract -->
-<div class="credit"> &copy; copyrigt @ <?php echo date('Y'); ?> by <span>Link Trương</span></div>
+<div class="credit"> &copy; copyrigt @  by <span>Link Trương</span></div>
 
 
 
